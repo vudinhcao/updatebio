@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<span id="time"></span>
+</body>
+<script>
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var d = new Date();
+var day = days[d.getDay()];
+var hr = d.getHours();
+var min = d.getMinutes();
+if (min < 10) {
+    // min = "0" + min;
+}
+var ampm = "AM";
+if( hr > 12 ) {
+
+     hr -= 12;
+     if (hr < 10) {
+     hr = "0" + hr;
+}
+    ampm = "PM";
+}
+var date = d.getDate();
+var month = months[d.getMonth()];
+var year = d.getFullYear();
+var x = document.getElementById("time");
+var date1=new Date("10/16/2000");
+var date2 = new Date();
+var days = Math.floor((date2 - date1) / (1000*60*60*24));
+x.innerHTML = day + ", " + date + " " + month + " " + year +"<br/>"+"At "+  hr + ":" + min +" "+ ampm + "<br/>"+formatNumber(days)+"Days" ;
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+</script>
+</html>
